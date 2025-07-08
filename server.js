@@ -1,7 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import fs from "fs";
+import mongoConnection from "./config/mongoConfig.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -21,10 +23,19 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(PORT, (err) => {
-  if (err) {
-    console.log("Server could not be started", err);
-  } else {
-    console.log("Server Started at PORT: ", PORT);
-  }
-});
+mongoConnection()
+  .then(() => {
+    console.log("Connection sucess");
+    //listner
+    app.listen(PORT, (err) => {
+      if (err) {
+        console.log("Server starting error");
+      } else {
+        console.log("Server start at: ", PORT);
+      }
+    });
+  })
+  .catch((err) => {
+    console.log("Conection error");
+    console.log(err.message);
+  });
