@@ -3,10 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import mongoConnection from "./config/mongoConfig.js";
 import dotenv from "dotenv";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 import { loginUser, registerUser } from "./controllers/authControllers.js";
 import { createTransaction } from "./controllers/transactionControllers.js";
+import { auth } from "./middleware/authmiddleware.js";
 dotenv.config();
 
 const app = express();
@@ -37,7 +36,7 @@ app.post("/api/v1/auth/login", loginUser);
 
 //transactions
 //create a transaction
-app.post("/api/v1/transactions", createTransaction);
+app.post("/api/v1/transactions", auth, createTransaction);
 
 //mongo connection
 mongoConnection()
