@@ -1,0 +1,35 @@
+@baseUrl = http://localhost:3000
+
+@apiUrl = {{baseUrl}}/api/v1
+
+#Get request
+GET {{baseUrl}}
+
+###
+POST {{apiUrl}}/Auth
+Content-Type: application/json
+
+{"username": "john",
+"email": "john@mail.com",
+"password": "123"}
+
+###
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "john@mail.com",
+    "password": "123"
+}
+
+###
+POST {{apiUrl}}/transactions
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AbWFpbC5jb20iLCJpYXQiOjE3NTI0NjU4MTQsImV4cCI6MTc1MjU1MjIxNH0.38Ga2zvjT-Uo_yII9WBlDgTvdtYP3r5ukp1X4D4IKr4
+
+{
+    "type": "income",
+    "description": "job",
+    "date": "07-14-2025",
+    "amount": "3000"
+}

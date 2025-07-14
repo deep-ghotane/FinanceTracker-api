@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 import cors from "cors";
 import mongoConnection from "./config/mongoConfig.js";
 import dotenv from "dotenv";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { loginUser, registerUser } from "./controllers/authControllers.js";
+import { createTransaction } from "./controllers/transactionControllers.js";
 dotenv.config();
 
 const app = express();
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // allow cors
 app.use(cors());
@@ -15,6 +19,7 @@ app.use(cors());
 //request body
 app.use(express.json());
 
+//Routes
 //base get api
 app.get("/", (req, res) => {
   res.json({
@@ -23,6 +28,18 @@ app.get("/", (req, res) => {
   });
 });
 
+//AUTH
+//POST request to register users
+app.post("/api/v1/auth", registerUser);
+
+//login
+app.post("/api/v1/auth/login", loginUser);
+
+//transactions
+//create a transaction
+app.post("/api/v1/transactions", createTransaction);
+
+//mongo connection
 mongoConnection()
   .then(() => {
     console.log("Connection sucess");
