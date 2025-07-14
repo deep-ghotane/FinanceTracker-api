@@ -1,14 +1,20 @@
 import jwt from "jsonwebtoken";
+import { getUser } from "../models/users/userModel.js";
+
 export const auth = async (req, res, next) => {
+  //if authentication, go to next
+  //else response with unauthenticated message
   console.log("Authenticatd called");
   try {
     let accessToken = req.headers.authorization;
 
-    console.log("Token", accessToken);
+    console.log("TOKEN", accessToken);
+
     let decoded = jwt.verify(accessToken, process.env.JWT_SECRET);
     console.log("DECODED VALUE: ", decoded);
 
     let user = await getUser({ email: decoded.email });
+
     if (user) {
       req.user = user;
       next();

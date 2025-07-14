@@ -1,15 +1,19 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
 import mongoConnection from "./config/mongoConfig.js";
 import dotenv from "dotenv";
 import { loginUser, registerUser } from "./controllers/authControllers.js";
-import { createTransaction } from "./controllers/transactionControllers.js";
+import {
+  createTransaction,
+  getTransactions,
+} from "./controllers/transactionControllers.js";
 import { auth } from "./middleware/authmiddleware.js";
+
 dotenv.config();
 
 const app = express();
 
+//GET PORT
 const PORT = process.env.PORT || 4000;
 
 // allow cors
@@ -38,6 +42,9 @@ app.post("/api/v1/auth/login", loginUser);
 //create a transaction
 app.post("/api/v1/transactions", auth, createTransaction);
 
+//fetch transactions
+app.post("/api/v1/transactions", auth, getTransactions);
+
 //mongo connection
 mongoConnection()
   .then(() => {
@@ -52,6 +59,6 @@ mongoConnection()
     });
   })
   .catch((err) => {
-    console.log("Conection error");
     console.log(err.message);
+    console.log("Database connection error");
   });
