@@ -1,5 +1,7 @@
-
-import { getTransactionsById, insertTransaction } from "../models/transactions/transationModel.js";
+import {
+  getTransactionsById,
+  insertTransaction,
+} from "../models/transactions/transationModel.js";
 
 //create transaction
 export const createTransaction = async (req, res) => {
@@ -17,35 +19,33 @@ export const createTransaction = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    return res.status.(500).json({
-        status: false,
-        message: err.message
-    })
+    return res.status(500).json({
+      status: false,
+      message: err.message,
+    });
   }
 };
 
 //get user transaction
 export const getTransactions = async (req, res) => {
-    try {
+  try {
+    //fetch the transactions
+    let userId = req.user._id;
 
-        //fetch the transactions
-        let userId = req.user._id;
+    let transactions = await getTransactionsById(userId);
 
-        let transactions = await getTransactionsById(userId);
-
-        return res.status(200).json({
-            status: true,
-            message: "Trasanctions fetched",
-            transactions,
-        });
-    } catch(err) {
-        return res.status(500).json({
-            status: false,
-            message: "Failed to fetch transactions"
-        })
-    }
-}
-
+    return res.status(200).json({
+      status: true,
+      message: "Trasanctions fetched",
+      transactions,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      status: false,
+      message: "Failed to fetch transactions",
+    });
+  }
+};
 
 //create delete api
 

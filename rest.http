@@ -23,13 +23,24 @@ Content-Type: application/json
 }
 
 ###
+//create transactions
 POST {{apiUrl}}/transactions
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjQ2Nzk3MiwiZXhwIjoxNzUyNTU0MzcyfQ.e9Dx8QEuvhQevM7X7fA7hDTOiEObnnOmUQERMw4U5wI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjUwMTU3MywiZXhwIjoxNzUyNTg3OTczfQ.SQmrKoLBhIMBNnBfcOo7cnkVTWvazOPF_u2PswNqukQ
 
 {
-    "type": "expense",
-    "description": "book",
-    "date": "07-10-2025",
-    "amount": "4000"
+    "type": "income",
+    "description": "youtube",
+    "date": "01-01-2025",
+    "amount": "555"
+}
+
+//get transactions
+###
+GET {{apiUrl}}/transactions
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjUwMTg5MywiZXhwIjoxNzUyNTg4MjkzfQ.R-fNrGygLf28GnbJJRCPONDDoQ29wdtY-PxfM4Pim4o
+
+{
+    "_id": "68748611d6799a4d1b883f1a"
 }
