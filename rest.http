@@ -38,9 +38,4 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNv
 //get transactions
 ###
 GET {{apiUrl}}/transactions
-Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjUwMTg5MywiZXhwIjoxNzUyNTg4MjkzfQ.R-fNrGygLf28GnbJJRCPONDDoQ29wdtY-PxfM4Pim4o
-
-{
-    "_id": "68748611d6799a4d1b883f1a"
-}
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjUzNTMwNiwiZXhwIjoxNzUyNjIxNzA2fQ.YOclOkqYM3y4xHN18ygycuVdCgd8wfjzxjBpikgMrIY
