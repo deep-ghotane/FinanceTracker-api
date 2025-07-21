@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { loginUser, registerUser } from "./controllers/authControllers.js";
 import {
   createTransaction,
+  deleteTransaction,
   getTransactions,
 } from "./controllers/transactionControllers.js";
 import { auth } from "./middleware/authmiddleware.js";
@@ -44,6 +45,9 @@ app.post("/api/v1/transactions", auth, createTransaction);
 
 //fetch transactions
 app.post("/api/v1/transactions", auth, getTransactions);
+
+// delete a transaction
+app.delete("/api/v1/transactions/:transactionid", auth, deleteTransaction);
 
 //mongo connection
 mongoConnection()
