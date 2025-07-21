@@ -9,8 +9,8 @@ GET {{baseUrl}}
 POST {{apiUrl}}/Auth
 Content-Type: application/json
 
-{"username": "pat",
-"email": "pat@mail.com",
+{"username": "cat",
+"email": "cat@mail.com",
 "password": "123"}
 
 ###
@@ -39,3 +39,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNv
 ###
 GET {{apiUrl}}/transactions
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBhdEBtYWlsLmNvbSIsImlhdCI6MTc1MjUzNTMwNiwiZXhwIjoxNzUyNjIxNzA2fQ.YOclOkqYM3y4xHN18ygycuVdCgd8wfjzxjBpikgMrIY
+
+
+###
+//delete transaction
+DELETE {{apiUrl}}/transactions/687db7bfef82d1c25dd21083
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJpYXQiOjE3NTMwNjk0MzcsImV4cCI6MTc1MzE1NTgzN30.jCzJlJHJJGHsWHW4CE1UbiEhONBIzBQKvrEmH3tjNmE

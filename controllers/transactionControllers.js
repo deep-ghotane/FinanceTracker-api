@@ -1,4 +1,5 @@
 import {
+  deleteTransactionByUserId,
   getTransactionsById,
   insertTransaction,
 } from "../models/transactions/transationModel.js";
@@ -48,5 +49,27 @@ export const getTransactions = async (req, res) => {
 };
 
 //create delete api
+
+export const deleteTransaction = async (req, res) => {
+  try {
+    // fetch the trasactions
+    // auth middleware
+    let userId = req.user._id;
+    let transactionid = req.params.transactionid;
+
+    let transaction = await deleteTransactionByUserId(transactionid, userId);
+
+    return res.status(200).json({
+      status: true,
+      message: "Trasaction deleted!",
+      transaction,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      status: false,
+      message: "Failed to delete transaction",
+    });
+  }
+};
 
 //create multiple transaction api
